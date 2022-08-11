@@ -1,2 +1,4 @@
 # dotfiles
-triple bogey
+
+<img src="screenshots/main.png">
+<img src="screenshots/overview.png">

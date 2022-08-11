@@ -1,0 +1,6 @@
+#!/bin/sh
+
+case $1 in
+	period-changed)
+		exec notify-send -u normal "Gammastep" "time: $3"
+esac

@@ -1,0 +1,18 @@
+{
+    "label" : "halt",
+    "action" : "/usr/sbin/openrc-shutdown --halt now",
+    "text" : "",
+    "keybind" : "h"
+}
+{
+    "label" : "shutdown",
+    "action" : "/usr/sbin/openrc-shutdown --poweroff now",
+    "text" : "",
+    "keybind" : "s"
+}
+{
+    "label" : "reboot",
+    "action" : "/usr/sbin/openrc-shutdown --reboot now",
+    "text" : "",
+    "keybind" : "r"
+}

@@ -1,0 +1,37 @@
+/*
+ * All the colors are quite strong and far from the default
+ * Tomorrow Night color scheme (#1d1f21, #c5c8c6)
+ * If I'd use those, the text wouldn't pop up enough, to read.
+ */
+
+* {
+	/* debug (unhighlight both) */	
+	//background: rgba(29, 31, 33, 1);
+	//border: 1px solid red;
+}
+
+window {
+	background: rgba(29, 31, 33, 0);
+	border-left: 5px dotted #ffffff;
+}
+
+.main_box {
+	padding: 10px;
+}
+
+label {
+	font-family: "JetBrainsMono Nerd Font";
+	font-weight: 800;
+	color: #ffffff;
+	text-shadow: 1px 1px 10px #000000; 
+}
+
+label:not(.space) {
+	/* tried to find an alternative to text-shadow: */
+	//background-color: rgba(29, 31, 33, 0.2)
+}
+
+.title {
+	font-weight: 900;
+	color: #ffffff;
+}

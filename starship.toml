@@ -1,0 +1,77 @@
+add_newline = true
+
+format = """
+  $directory $username $cmd_duration $git_branch$crystal$docker_context$elixir$java$lua$nodejs$perl$php$python$ruby$rust$swift
+  $character"""
+
+[username]
+style_user = "green"
+style_root = "red"
+format = "[($user)]($style)"
+show_always = true
+disabled = false
+
+[directory]
+format = "[$read_only]($read_only_style)[](purple)[$path](blue)[](purple)"
+read_only = " "
+read_only_style = "red"
+home_symbol = "~"
+truncation_length = 2
+truncate_to_repo = true
+truncation_symbol = "*/"
+disabled = false
+
+[cmd_duration]
+min_time = 0
+format = "[*](#de935f)[$duration](yellow)[*](#de935f)"
+disabled = false
+
+[character]
+success_symbol = "[>](green)"
+error_symbol = "[×](red)"
+#use_symbol_for_status = true
+
+[git_branch]
+format = "[ ](bold red)"
+disabled = false
+
+[docker_context]
+format = "[ ](bold blue)"
+disabled = false
+
+[java]
+format = "[ ](bold white)"
+disabled = false
+
+[lua]
+format = "[ ](bold yellow)"
+disabled = false
+
+[nodejs]
+format = "[ ](bold green)"
+disabled = false
+
+[perl]
+format = "[🐪 ](bold #de935f)"
+disabled = false
+
+[php]
+format = "[ ](bold 147)"
+disabled = false
+
+[python]
+format = "[ ](yellow bold)"
+disabled = false
+
+[ruby]
+format = "[ ](bold red)"
+disabled = false
+
+[rust]
+format = "[ ](bold red)"
+disabled = false
+
+[swift]
+format = "[ ](bold red)"
+disabled = false
+

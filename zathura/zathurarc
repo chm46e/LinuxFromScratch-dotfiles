@@ -1,0 +1,27 @@
+set window-height 800
+set window-width 1200
+set adjust-open width
+
+set font "JetBrainsMono Nerd Font 12"
+set default-bg "#1d1f21" 
+set default-fg "#c5c8c6"
+
+set statusbar-fg "#c5c8c6"
+set statusbar-bg "#282a2e"
+
+set inputbar-bg "#1d1f21" 
+set inputbar-fg "#c5c8c6" 
+
+set notification-bg "#282a2e"
+set notification-fg "#c5c8c6"
+
+set completion-bg "#282a2e"
+set completion-fg "#c5c8c6"
+set completion-group-bg "#373b41"
+set completion-group-fg "#c5c8c6"
+set completion-highlight-bg "#373b41"
+set completion-highlight-fg "#c5c8c6"
+
+set recolor "true"
+set recolor-lightcolor "#1d1f21"
+set recolor-keephue "true"

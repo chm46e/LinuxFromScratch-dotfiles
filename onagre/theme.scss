@@ -1,0 +1,52 @@
+.onagre {
+  --exit-unfocused: true;
+  height: 250px;
+  width: 400px;
+  --font-family: "JetBrainsMono Nerd Font";
+  font-size: 16px;
+  background: #1d1f21;
+  color: #c5c8c6;
+  padding: 10px;
+
+  .container {
+    .search {
+      --height: fill-portion 1;
+      background: #373b41;
+      color: #c5c8c6;
+      padding: 4px;
+      .plugin-hint {
+        font-size: 16px;
+        color: #81a2be;
+        border-width: 2px;
+        border-color: #464b53;
+        border-radius: 5%;
+        background: #373b41;
+        --align-x: center;
+        --align-y: center;
+        --height: fill;
+      }
+
+      .input {
+        color: #c5c8c6;
+        --width: fill-portion 11;
+      }
+
+    }
+
+    .rows {
+      --height: fill-portion 5;
+      .row-selected {
+        background: #2a2d32;
+        color: #f0c674;
+        --spacing: 3px;
+        --align-y: center;
+      }
+    }
+
+    .scrollable {
+      .scroller {
+        color: #4b5159;
+      }
+    }
+  }
+}

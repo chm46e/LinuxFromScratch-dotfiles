@@ -1,0 +1,234 @@
+(defpoll USER :interval "10m" `whoami`)
+(defpoll TIME :interval "1m" `date +\"%H:%M\"`)
+(defpoll DATE :interval "5m" `date +\"%a %d-%m\"`)
+(defpoll HOST :interval "1h" `hostname`)
+
+(defpoll OS :interval "1h" `sh/system.sh os`)
+(defpoll KERNEL :interval "1h" `sh/system.sh kernel`)
+(defpoll SYSTEM :interval "1h" `sh/system.sh system`)
+(defpoll UPTIME :interval "1m" `sh/system.sh uptime`)
+
+(defpoll PROC1 :interval "10s" `sh/system.sh proc 1`)
+(defpoll PROC2 :interval "10s" `sh/system.sh proc 2`)
+(defpoll PROC3 :interval "10s" `sh/system.sh proc 3`)
+(defpoll PROC4 :interval "10s" `sh/system.sh proc 4`)
+(defpoll PROCC :interval "10s" `sh/system.sh procc`)
+
+(defpoll CPUFREQ :interval "2s" `sh/system.sh cpufreq`)
+(defpoll LOAD :interval "3s" `sh/system.sh load`)
+
+(defpoll BTRFSPERC :interval "5m" `sh/system.sh btrfsperc`)
+(defpoll BTRFSGB :interval "5m" `sh/system.sh btrfsgb`)
+(defpoll BATPROC :interval "10s" `sh/system.sh batproc`)
+(defpoll BATSTAT :interval "10s" `sh/system.sh batstat`)
+(defpoll BATTIME :interval "10s" `sh/system.sh battime`)
+(defpoll DISKRE :interval "10s" `sh/system.sh diskre`)
+(defpoll DISKWR :interval "10s" `sh/system.sh diskwr`)
+
+(defpoll VOLUME :interval "2s" `sh/controls.sh volume`)
+(defpoll VOLMUTE :interval "2s" `sh/controls.sh volmute`)
+(defpoll CAPTURE :interval "2s" `sh/controls.sh capture`)
+(defpoll CAPMUTE :interval "2s" `sh/controls.sh capmute`)
+(defpoll LIGHT :interval "2s" `sh/controls.sh light`)
+
+(defpoll SSID :interval "10m" `sh/net.sh ssid`)
+(defpoll BSSID :interval "10m" `sh/net.sh bssid`)
+(defpoll DNS :interval "10m" `sh/net.sh dns`)
+(defpoll LAN :interval "10m" `sh/net.sh lan`)
+(defpoll MAC :interval "10m" `sh/net.sh mac`)
+
+(defpoll ALLPORTC :interval "5s" `sh/net.sh allportc`)
+(defpoll LISTENPORTC :interval "5s" `sh/net.sh listenportc`)
+(defpoll TCPPORTC :interval "5s" `sh/net.sh tcpportc`)
+(defpoll UDPPORTC :interval "5s" `sh/net.sh udpportc`)
+
+(defpoll ADBUP :interval "5m" `sh/net.sh adbup`)
+(defpoll NASUP :interval "5m" `sh/net.sh nasup`)
+
+(defwidget main []
+  (box :class "main_box" :orientation "v" :space-evenly "false"
+    (box :orientation "h" :space-evenly "false"
+      (label :text "USER: " :class "title")
+      (label :text USER)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "TIME: " :class "title")
+      (label :text TIME)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "DATE: " :class "title")
+      (label :text DATE)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "HOST: " :class "title")
+      (label :text HOST)
+    )
+    (label :class "space")
+    (box :orientation "h" :space-evenly "false"
+      (label :text "OS: " :class "title")
+      (label :text OS)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "KERNEL: " :class "title")
+      (label :text KERNEL)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "SYSTEM: " :class "title")
+      (label :text SYSTEM)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "UPTIME: " :class "title")
+      (label :text UPTIME)
+    )
+    (label :class "space")
+    (box :orientation "h" :space-evenly "false"
+      (label :text "1:" :class "title")
+      (label :text PROC1 :limit-width 23)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "2:" :class "title")
+      (label :text PROC2 :limit-width 23)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "3:" :class "title")
+      (label :text PROC3 :limit-width 23)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "4:" :class "title")
+      (label :text PROC4 :limit-width 23)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "Total: " :class "title")
+      (label :text PROCC)
+    )
+    (label :class "space")
+    (box :orientation "h" :space-evenly "false"
+      (label :text "CPU: " :class "title")
+      (label :text {round(EWW_CPU.avg, 2)})
+      (label :text "% ")
+      (label :text CPUFREQ)
+      (label :text "MHz")
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "MEM: " :class "title")   
+      (label :text {round(EWW_RAM.used_mem_perc, 2)})
+      (label :text "% ")
+      (label :text {round(EWW_RAM.used_mem / 1000, 0)})
+      (label :text "Mb")
+    ) 
+    (box :orientation "h" :space-evenly "false"
+      (label :text "SWAP: " :class "title") 
+      (label :text {round(EWW_RAM.free_swap / EWW_RAM.total_swap - 1, 2)})
+      (label :text "% ")
+      (label :text {EWW_RAM.total_swap - EWW_RAM.free_swap})
+      (label :text "Kb")
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "LOAD: " :class "title")
+      (label :text LOAD)
+    )
+    (label :class "space")
+    (box :orientation "h" :space-evenly "false"
+      (label :text "BTRFS: " :class "title")
+      (label :text BTRFSPERC)
+      (label :text BTRFSGB)
+      (label :text "b")
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "BAT0: " :class "title")
+      (label :text BATPROC)
+      (label :text "% ")
+      (label :text BATSTAT)
+      (label :text ". ")
+      (label :text BATTIME)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "ENO1: " :class "title")
+      (label :text " ")
+      (label :text {round(EWW_NET.eno1.NET_UP / 1000, 1)})
+      (label :text "Kb  ")
+      (label :text {round(EWW_NET.eno1.NET_DOWN / 1000, 1)})
+      (label :text "Kb")
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "DIO: " :class "title")
+      (label :text " ")
+      (label :text DISKRE)
+      (label :text "Kb  ")
+      (label :text DISKWR)
+      (label :text "Kb")
+    )
+    (label :class "space")
+    (box :orientation "h" :space-evenly "false"
+      (label :text "VOLUME: " :class "title")
+      (label :text VOLUME)
+      (label :text VOLMUTE)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "CAPTURE: " :class "title")
+      (label :text CAPTURE)
+      (label :text CAPMUTE)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "LIGHT: " :class "title")  
+      (label :text LIGHT)
+      (label :text "%")
+    )
+    (label :class "space")
+    (box :orientation "h" :space-evenly "false"
+      (label :text "SSID: " :class "title")
+      (label :text SSID)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "BSSID: " :class "title")
+      (label :text BSSID)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "DNS: " :class "title")
+      (label :text DNS)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "LAN: " :class "title")
+      (label :text LAN)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "MAC: " :class "title")
+      (label :text MAC)
+    )
+    (label :class "space")
+    (label :text "PORTS:" :class "title" :halign "start")
+    (box :orientation "h" :space-evenly "false"
+      (label :text "ALL: " :class "title")
+      (label :text ALLPORTC)
+      (label :text "LISTEN: " :class "title")
+      (label :text LISTENPORTC)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "TCP: " :class "title")
+      (label :text TCPPORTC)
+      (label :text "UDP: " :class "title")
+      (label :text UDPPORTC)
+    )
+    (label :class "space")
+    (label :text "SERVERS:" :class "title" :halign "start")
+    (box :orientation "h" :space-evenly "false"
+      (label :text "ADB: " :class "title")
+      (label :text ADBUP)
+    )
+    (box :orientation "h" :space-evenly "false"
+      (label :text "NAS: " :class "title")
+      (label :text NASUP)
+    )
+  )
+)
+
+(defwindow info
+  :monitor 0
+  :stacking "bottom"
+  :exclusive "false"
+  :geometry (geometry :x "10px"
+                      :y "0px"
+                      :width "250px"
+                      :height "800px"
+                      :anchor "center left")
+  (main))
